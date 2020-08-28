@@ -1,8 +1,8 @@
 # My_Board_Game
 This is my Project on creation of digital board game and it is part of my assignment.
 
-## Game Introduction
-**Black Hole** is the board game which has been represented. So basically, this game is based on simple tile and can be played on the grid i.e., 4×4. So, we are having 16 tiles to play on. The black holes will be randomly placed on that board. Once a player reaches to that black hole the player has to restart from the start point. Until and unless he reaches the end point this will be repeated. As soon as the player reaches to the end point it will win. 
+## Black Hole
+**Black Hole** is the simple board game on digital platform. So basically, this game is based on simple tile and can be played on the grid i.e., 4×4. So, we are having 16 tiles to play on. The black holes will be randomly placed on that board. Once a player reaches to that black hole the player has to restart from the start point. Until and unless he reaches the end point this will be repeated. As soon as the player reaches to the end point it will win. 
 
 ## Graphical Representation
 ![Game Image](https://user-images.githubusercontent.com/56120106/91594872-386d6300-e980-11ea-8dc5-b1ce5858dfaa.png)
