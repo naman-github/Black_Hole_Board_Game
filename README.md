@@ -15,5 +15,25 @@ This is my Project on creation of digital board game and it is part of my assign
 5.	If the player the player gets on the black hole coordinate, he will lose and the game will be restarted.
 6.	If the player successfully reached to the end point without getting caught in the black hole, he will win.
 
+## Python Version
+Python 3 (Any Version of 3)
+
+
+## Technical Requirements
+
+#### Modules
+Here Modules used are :- tkinter, random, time
+
+#### Methods
+Here Methods used are :- color(), create(), mainloop(), title(), canvas(), pack()
+
+#### Functions 
+Here Functions used are :- gameplay(), start_game(), init(), geometry()
+
+#### Attributes
+Here Attributes used are :- (command, text, font, anchor, fill, padx, pady, background, foreground, outline) 
+
+
+
 ## Author 
 **Naman Sharma**
