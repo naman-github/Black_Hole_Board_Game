@@ -25,13 +25,13 @@ Python 3 (Any Version of 3)
 Here Modules used are :- tkinter, random, time
 
 #### Methods
-Here Methods used are :- color(), create(), mainloop(), title(), canvas(), pack()
+Here Methods used are :- color(), create(), mainloop(), title(), canvas(), pack(), geometry(), minsize(), maxsize()
 
 #### Functions 
-Here Functions used are :- gameplay(), start_game(), init(), geometry()
+Here Functions used are :- gameplay(), start_game(), init(), game_info(), leave(), dice()
 
 #### Attributes
-Here Attributes used are :- (command, text, font, anchor, fill, padx, pady, background, foreground, outline) 
+Here Attributes used are :- (command, text, font, anchor, fill, padx, pady, background, foreground, outline, borderwidth) 
 
 
 
