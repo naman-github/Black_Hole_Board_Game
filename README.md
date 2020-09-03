@@ -2,10 +2,14 @@
 This is my Project on creation of digital board game and it is part of my assignment.
 
 ## Black Hole
-**Black Hole** is the simple board game on digital platform. So basically, this game is based on simple tile and can be played on the grid i.e., 4×4. So, we are having 16 tiles to play on. The black holes will be randomly placed on that board. Once a player reaches to that black hole the player has to restart from the start point. Until and unless he reaches the end point this will be repeated. As soon as the player reaches to the end point it will win. 
+**Black Hole** is the simple digital board game. So basically, this game is based on simple tile and can be played on the grid i.e., 6×5. So, we are having 30 tiles to play on. The black holes will be randomly placed on that board. Once a player reaches to that black hole the player has to restart from the start point. Until and unless he reaches the end point this will be repeated. It is the two-player game and the player who reaches first crossing the hurdles reaches to the end point will win.
+ 
 
 ## Graphical Representation
 ![Game Image](https://user-images.githubusercontent.com/56120106/91594872-386d6300-e980-11ea-8dc5-b1ce5858dfaa.png)
+
+## Game Layout
+![Game Layout](https://user-images.githubusercontent.com/56120106/92147265-7ebb3a00-ee38-11ea-8e27-94cddfa4227b.png)
 
 ## Game Rules
 1.	This game will be started from the first tile in the grid i.e., start point.
@@ -22,10 +26,10 @@ Python 3 (Any Version of 3)
 ## Technical Requirements
 
 #### Modules
-Here Modules used are :- tkinter, random, time
+Here Modules used are :- tkinter, random, time,os
 
 #### Methods
-Here Methods used are :- color(), create(), mainloop(), title(), canvas(), pack(), geometry(), minsize(), maxsize()
+Here Methods used are :- color(), create(), mainloop(), title(), canvas(), pack(), geometry()
 
 #### Functions 
 Here Functions used are :- gameplay(), start_game(), init(), game_info(), leave(), dice()
