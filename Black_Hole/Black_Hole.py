@@ -1,59 +1,170 @@
 from tkinter import *
+import random
+import os
 
-root = Tk()
-# Width x Height
-root.geometry("878x635")
-# width,height
-root.minsize(300,300)
-root.maxsize(900, 900)
 
-root.title("Black_Hole_Board_Game")
-main_title = Label(text="Welcome to Black Hole",font= "Arial 14 bold",fg = "black")
-main_title.pack()
+class Display(object):
+    def __init__(self,root,img):
 
-def game_info():
-   messagebox.showinfo("Game Rules", 
+        #Create board for Black Hole
+        canvas_width = 850
+        canvas_height = 600
+        self.color = ["#FF0", "#F00"]
+        self.canvas = Canvas(root, width = canvas_width, height = canvas_height, bg = "silver")
+        self.canvas.grid(padx=0, pady=0)
+        self.canvas.create_image(360,300,anchor=CENTER, image = img)
+
+        self.x = 65
+        self.y = 510
+        self.m = []
+        self.num_player = "Players"
+        self.player = []
+        self.position = []
+        self.i = 0
+        self.block=[]
+        self.move = 1
+        self.turn = 0
+        
+        
+        #Drop Menu
+        OPTIONS = ["Players", "2", ]
+        variable = StringVar(root)
+        variable.set(OPTIONS[0]) # default value
+        w = OptionMenu(self.canvas, variable, *OPTIONS, command=self.get_choice)
+        w.pack()
+        w.place(x=740, y=225)
+        w.config(font=('calibri',(10)),bg='white',width=5)
+        
+        #Defining the buttons
+        self.startGame = Button(self.canvas, text="Start", background='white', command = self.startGame, font=("Helvetica"))
+        self.startGame.place(x=760, y=400)
+        
+        self.game_info = Button(self.canvas, text = "Game Rules",background='white', command = self.game_info, font=("Helvetica"))
+        self.game_info.place(x=722, y=450)
+
+        self.restart_program = Button(self.canvas, text = "Restart",background='white', command = self.restart_program, font=("Helvetica"))
+        self.restart_program.place(x=750, y=500)
+        
+        self.leave = Button(self.canvas, text = "Exit",background='white', command = self.restart_program, font=("Helvetica"))
+        self.leave.place(x=770, y=550)
+        
+        
+
+    def leave():
+        ## for exiting the program
+        root.destroy()
+
+    def restart_program(self):
+        ## for restarting the program
+        python = sys.executable
+        os.excel(python,python, *sys.argv)
+        return restart_program()
+
+
+    def game_info(self):
+        ## for displaying the game rules
+        messagebox.showinfo("Game Rules", 
                          "1. The game will be started from the first tile in the grid i.e., start point and end at the end point.\n\
                         \n2. There will be a button by which the random will generate between 1 to 4.\n\
                         \n3. If the player the player gets on the black hole coordinate, he will lose and the game will be restarted.\n\
                         \n4. If the player successfully reached to the end point without getting caught in the black hole, he will win")
-  
-def leave():
-    root.destroy()
-    
-
-                       
-f1 = Frame(root, bg="silver", borderwidth=6, relief=GROOVE)
-f1.pack(side=LEFT,anchor ="se" )
-
-f2 = Frame(root,bg="silver", borderwidth= 5, relief = GROOVE)
-f2.pack(side=RIGHT,anchor=CENTER)
-
-f3 = Frame(root,bg="silver", borderwidth= 10, relief = GROOVE)
-f3.pack(side= TOP)
-
-l = Label(f1, text="MENU",font="Arial 14 bold")
-l.pack(pady=30,padx=30)
-
-b1 = Button(f1,fg="blue",text="Game Info",font="Arial 10 bold", command = game_info)
-b1.pack(side = TOP)
-
-b2 = Button(f1,fg="Green",text="Restart",font="Arial 10 bold")
-b2.pack(side = TOP)
-
-b3 = Button(f1,fg="red",text="Leave",font="Arial 10 bold", command = leave)
-b3.pack(side = TOP)
-
-b4 = Button(f2,fg="black",text="ROLL",font="Arial 20 bold")
-b4.pack(side = TOP,pady=15,padx=15)
-    
-                                     
    
-main_frame = Canvas(root, width=600, height=600, background= "white")                
-main_frame.pack(fill = BOTH)
+    def startGame(self):
+        if(self.num_player == "Players"):
+            pass
+        else:
+            #Dice
+            #Screen
+            self.canvas.create_rectangle(810, 150, 760, 100, fill='white', outline='black')
+            self.canvas.pack(fill=BOTH, expand=1)
+            #Button
+            self.diceRoll = Button(self.canvas, text="Roll",background='white',command = self.gamePlay, font=("Helvetica"))
+            self.num_player = int(self.num_player)
+            self.diceRoll.place(x=770, y=165)
+            self.create_peice()
+            self.startGame.place(x=-30, y=-30)
 
-main_frame.create_rectangle(5,4,600,600,fill = "white",width = 4)                       
-                                                                                 
- 
-root.mainloop()
 
+    def get_choice(self, value):
+        self.num_player = value
+
+
+    def diceMove(self, position, turn):
+        move = dice()
+        #move = 1
+        #Print Dice Value to screen
+        dice_value = Label(self.canvas, text=str(move),background='white', font=("Helvetica", 25))
+        dice_value.pack()
+        dice_value.place(x=775, y=105)
+        
+        
+        self.x, self.y = position[0], position[1]
+        if(move+self.block[turn] > 30):
+            return [self.x, self.y]
+        
+
+        self.block[turn] += move
+        
+        self.canvas.delete(self.player[turn])
+
+        return [self.x, self.y]
+    
+    
+    def create_peice(self):
+        ## for creating the peice in the game
+        for i in range(int(self.num_player)):
+            if(i==3):
+                self.x += 35
+                self.y -= 105
+            self.player.append(self.canvas.create_circle(self.x, self.y, 15, fill=self.color[i], outline=""))
+            self.position.append([self.x, self.y])
+            self.m.append(1)
+            self.block.append(1)
+            self.y += 35
+    
+    
+        
+    def gamePlay(self):
+        if(self.move == 6):
+            turn = self.turn
+        else:
+            turn = self.i%self.num_player
+            self.i += 1
+            self.turn = turn
+        self.position[turn] = self.diceMove(self.position[turn], turn)
+        if(self.block[self.turn] >= 30):
+            self.diceRoll.place(x=-30, y=-30)
+            print("Won", self.turn+1)
+            top = Toplevel()
+            top.title("Black Hole")
+            message = "Player " + str(self.turn+1) + " Won" 
+            msg = Message(top, text=message)
+            top.geometry("%dx%d%+d%+d" % (100, 100, 250, 125))
+            msg.pack()
+            button = Button(top, text="Exit", command=top.destroy)
+            button.pack()
+            
+            
+            
+def dice():
+    ## for generating the random number dice
+    move = random.randrange(1, 7, 1)
+    return move
+
+
+def _create_circle(self, x, y, r, **kwargs):
+    ## for creating the circles of the dice
+    return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
+Canvas.create_circle = _create_circle
+    
+
+
+def main():
+    root = Tk()
+    root.title("Black Hole")
+    root.geometry("850x605")
+    img = PhotoImage( file = "board.gif")
+    x = Display(root,img)
+    root.mainloop()
+
+main()
